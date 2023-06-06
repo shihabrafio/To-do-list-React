@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 
 const TodosLogic = () => {
-    const [tododata, setTododata] = useState([
+    const [todos, setTodos] = useState([
           {
             id: uuidv4(),
             title: 'Setup development environment',
@@ -24,7 +24,7 @@ const TodosLogic = () => {
         ]);
 
         const handleChange = (id) => {
-            setTododata((prevState) =>
+            setTodos((prevState) =>
               prevState.map((todo) => {
                 if (todo.id === id) {
                   return {
@@ -37,9 +37,9 @@ const TodosLogic = () => {
             );
           };
 
-          const deleteTodo = (id) => {
-            setTododata([
-                ...tododata.filter((todo) => {
+          const delTodo = (id) => {
+            setTodos([
+                ...todos.filter((todo) => {
                     return todo.id !==id;
                 }),
             ]);
@@ -51,13 +51,25 @@ const TodosLogic = () => {
                 title: title,
                 completed: false,
               };
-              setTododata([...tododata, newTodo]);
+              setTodos([...todos, newTodo]);
           };  
+
+          const setUpdate = (updatedTitle, id) => {
+            setTodos(
+              todos.map((todo) => {
+                if (todo.id === id) {
+                  todo.title = updatedTitle;
+                }
+                return todo;
+
+              })
+            );
+          };
 
     return (
         <div>
             <InputTodo addTodoItem={addTodoItem}/>
-            <TodosList todosProps={tododata} handleChange={handleChange} deleteTodo={deleteTodo} />
+            <TodosList todosProps={todos} handleChange={handleChange} delTodo={delTodo} setUpdate={setUpdate} />
       </div>
     )
     }
