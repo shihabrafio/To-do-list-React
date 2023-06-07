@@ -1,5 +1,4 @@
 /* eslint react/prop-types: 0 */
-
 import { useState } from 'react';
 const InputTodo = ({ addTodoItem }) => {
     const [title, setTitle] = useState('');
@@ -18,7 +17,10 @@ const InputTodo = ({ addTodoItem }) => {
             setMessage('Please add item.');
           }
     };
-
+    const inputStyles = {
+      marginLeft: '5%',
+      paddingRight: '75%',
+    };
     return (
     <>
       <form onSubmit={handleSubmit} className="form-container">
@@ -28,6 +30,7 @@ const InputTodo = ({ addTodoItem }) => {
         value={title}
         onChange={handleChange}
         className="input-text"
+        style={inputStyles}
         />
         <button className="input-submit">Submit</button>
       </form>
