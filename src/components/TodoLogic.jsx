@@ -69,7 +69,7 @@ const TodosLogic = () => {
     return (
         <div>
             <InputTodo addTodoItem={addTodoItem}/>
-            <TodosList todosProps={todos} handleChange={handleChange} delTodo={delTodo} setUpdate={setUpdate} />
+            <TodosList todosProps={todos} handlechange={handleChange} deleteTodo={delTodo} Update={setUpdate} />
       </div>
     )
     }
