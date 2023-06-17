@@ -23,7 +23,7 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
   }
 
   const handleUpdatedDone = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.key === 'Escape') {
       setEditing(false);
     }
   };
